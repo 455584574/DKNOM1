@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.DCBLendYVOMapper">
+    <resultMap id="baseResult" type="com.qianfeng.springboot.vo.DCBLendYVO">
+        <result property="borrowerName" column="borrower_name" javaType="java.lang.String"/>
+        <result property="productName" column="product_name" javaType="java.lang.String"/>
+        <result property="rateReturn" column="rate_return" javaType="java.lang.Float"/>
+        <result property="viability" column="viability" javaType="java.lang.Integer"/>
+    </resultMap>
+
+    <select id="selectDCBInfo" resultMap="baseResult">
+        select b.borrower_name,p.product_name,pi.rate_return,pi.viability
+        from product_info pi join product p
+        on pi.product_id=p.product_id
+        join borrower b
+        on pi.borrower_id=b.borrower_id
+        where pi.product_info_id=#{productInfoId}
+    </select>
+</mapper>

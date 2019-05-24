@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.YBorrowInfoVOMapper">
+
+
+    <resultMap id="baseResult" type="com.qianfeng.springboot.vo.BorrowInfoYVO">
+        <id property="borrowMoneyId" column="borrow_money_id" javaType="java.lang.Integer"/>
+        <id property="borrowNumber" column="borrow_number" javaType="java.lang.String"/>
+        <id property="borrowerId" column="borrower_id" javaType="java.lang.Integer"/>
+        <id property="borrowerName" column="borrower_name" javaType="java.lang.String"/>
+        <id property="borrowerNumber" column="borrower_number" javaType="java.lang.String"/>
+        <id property="viability" column="viability" javaType="java.lang.Integer"/>
+        <id property="borrowMoneySum" column="borrow_money_sum" javaType="java.lang.Integer"/>
+    </resultMap>
+
+    <select id="selectBorrowInfoYVOById" resultMap="baseResult">
+        select bm.borrow_money_id,bm.borrow_number,b.borrower_id,b.borrower_name,b.borrower_number,p.viability,bm.borrow_money_sum
+        from borrow_money bm join product_info p
+        on bm.product_info_id = p.product_info_id
+        join borrower b on bm.borrower_id=b.borrower_id
+        where p.product_info_id=#{productInfoId}
+        limit #{index},10
+    </select>
+</mapper>
