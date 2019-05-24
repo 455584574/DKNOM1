@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.YBidDetailMapper">
+    <resultMap id="baseResult" type="com.qianfeng.springboot.bean.BidDetail">
+        <id property="bidId" column="bid_id" javaType="java.lang.Integer"/>
+        <result property="userId" column="user_id" javaType="java.lang.Integer"/>
+        <result property="borrowNumber" column="borrow_number" javaType="java.lang.String"/>
+        <result property="bidMoney" column="bid_money" javaType="java.lang.Float"/>
+        <result property="bidTime" column="bid_time" javaType="java.lang.String"/>
+        <result property="bidStatusbidStatus" column="bid_statusbid_status" javaType="java.lang.String"/>
+        <result property="bidStatus" column="bid_status" javaType="java.lang.String"/>
+        <result property="grossInterest" column="gross_interest" javaType="java.lang.Float"/>
+    </resultMap>
+    <insert id="saveBidDetail" >
+        insert into bid_detail(user_id, borrow_number,bid_money, bid_time,bid_statusbid_status, bid_status, gross_interest,product_info_id)
+        values(#{bidDetail.userId},#{bidDetail.borrowNumber},#{bidDetail.bidMoney},#{bidDetail.bidTime},#{bidDetail.bidStatusbidStatus},#{bidDetail.bidStatus},
+        #{bidDetail.grossInterest},#{bidDetail.productInfoId})
+    </insert>
+    
+    <select id="selectBidDetailByBorrowMoneyId" resultMap="baseResult">
+        select bid_id,user_id,bid_money,bid_time,bid_statusbid_status,bid_status,
+        gross_interest,product_info_id from bid_detail where product_info_id=#{productInfoId}
+    </select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.LendInfoYVOMapper">
+
+    <resultMap id="baseResult" type="com.qianfeng.springboot.vo.LendInfoYVO">
+        <result property="userNickname" column="user_nickname" javaType="java.lang.String"/>
+        <result property="bidMoney" column="bid_money" javaType="java.lang.Float"/>
+        <result property="bidTime" column="bid_time" javaType="java.lang.String"/>
+    </resultMap>
+
+    <select id="selectLendInfoVO" resultMap="baseResult">
+        select user_nickname,bid_money,bid_time from bid_detail b
+        join tb_user u on b.user_id = u.user_id
+        where b.bid_statusbid_status='定存宝'  order by b.bid_id desc limit 0,10
+    </select>
+</mapper>
