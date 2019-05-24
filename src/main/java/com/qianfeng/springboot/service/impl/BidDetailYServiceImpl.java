@@ -1,14 +1,11 @@
 package com.qianfeng.springboot.service.impl;
 
-import com.qianfeng.springboot.bean.BidDetail;
-import com.qianfeng.springboot.bean.ProductInfo;
 import com.qianfeng.springboot.dao.YBidDetailMapper;
 import com.qianfeng.springboot.dao.YProductInfoMapper;
 import com.qianfeng.springboot.service.IBidDetailYService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Service
 public class BidDetailYServiceImpl implements IBidDetailYService {

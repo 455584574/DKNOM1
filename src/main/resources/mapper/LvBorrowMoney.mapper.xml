@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.lv.LvBorrowMoneyDao">
+    <!--建立结果集映射关系-->
+    <resultMap id="BorrowMoneyMap" type="com.qianfeng.springboot.bean.BorrowMoney">
+        <id property="borrowMoneyId" column="borrowmoney_id"></id>
+        <result property="borrowNumber" column="borrow_number"></result>
+        <result property="productId" column="product_id"></result>
+        <result property="borrowerId" column="borrower_id"></result>
+        <result property="borrowMoneySum" column="borrow_money_sum"></result>
+        <result property="borrowMoneyServe" column="borrow_money_serve"></result>
+        <result property="fundsReceived" column="funds_received"></result>
+        <result property="borrowMoneyRepayment" column="borrow_money_repayment"></result>
+        <result property="receiptCapital" column="receipt_capital"></result>
+        <result property="receiptInterest" column="receipt_interest"></result>
+        <result property="bidSun" column="bid_sun"></result>
+        <result property="annualInterestRate" column="annual_interest_rate"></result>
+        <result property="paymentMethod" column="payment_method"></result>
+        <result property="minTenderedSum" column="min_tendered_sum"></result>
+        <result property="validTime" column="valid_time"></result>
+        <result property="lifeOfLoan" column="life_of_loan"></result>
+        <result property="maxBid" column="max_bid"></result>
+        <result property="finalRepaymentDate" column="final_repayment_date"></result>
+        <result property="borrowMoneyState" column="borrow_money_state"></result>
+        <result property="achievePercent" column="achieve_percent"></result>
+        <result property="releaseTime" column="release_time"></result>
+        <result property="repaymentStartTime" column="repayment_start_time"></result>
+        <result property="repaymenFinalTime" column="repaymen_final_time"></result>
+    </resultMap>
+    <!--近期商品查询-->
+    <sql id="recent">
+       product_id,borrow_number,borrower_id,annual_interest_rate,borrow_money_sum,life_of_loan,achieve_percent,borrow_money_state
+    </sql>
+    <!--根据产品查询商品-->
+    <select id="findBy" resultMap="BorrowMoneyMap">
+        SELECT
+        <include refid="recent"></include>
+        FROM borrow_money
+        <if test="id!=null">
+            <where>
+                  product_id=#{id}
+            </where>
+        </if>
+    </select>
+    <!--根据流水单号查询记录-->
+    <select id="findById" resultMap="BorrowMoneyMap">
+        SELECT * FROM borrow_money
+        <where>
+            product_id=#{productId} AND borrow_number=#{borrowNumber}
+        </where>
+    </select>
+    <update id="updataMoney">
+        UPDATE borrow_money
+        SET funds_received=#{sum},max_bid=#{time},
+                                achieve_percent='100%',borrow_money_state='0'
+        WHERE  borrow_number=#{borrowNumber}
+    </update>
+</mapper>

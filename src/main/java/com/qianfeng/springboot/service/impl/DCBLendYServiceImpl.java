@@ -1,9 +1,6 @@
 package com.qianfeng.springboot.service.impl;
 
-import com.qianfeng.springboot.bean.BidDetail;
-import com.qianfeng.springboot.bean.BorrowMoney;
 import com.qianfeng.springboot.bean.TbUser;
-import com.qianfeng.springboot.bean.TradingRecord;
 import com.qianfeng.springboot.dao.*;
 import com.qianfeng.springboot.service.IDCBLendYService;
 import com.qianfeng.springboot.vo.DCBLendYVO;
