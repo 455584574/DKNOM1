@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.lv.LvBorrowDao">
+    <!--建立结果集映射关系-->
+    <resultMap id="BorrowMap" type="com.qianfeng.springboot.bean.Borrower">
+        <id property="borrowerId" column="borrower_id"></id>
+        <result property="borrowerName" column="borrower_name"></result>
+        <result property="borrowerNumber" column="borrower_number"></result>
+        <result property="borrowerSex" column="borrower_sex"></result>
+        <result property="borrowerAge" column="borrower_age"></result>
+        <result property="borrowerDegree" column="borrower_degree"></result>
+        <result property="borrowerMarriage" column="borrower_marriage"></result>
+        <result property="borrowerCensusRegister" column="borrower_census_register"></result>
+        <result property="borrowMoneyUse" column="borrow_money_use"></result>
+        <result property="monthlyIncome" column="monthly_income"></result>
+        <result property="liabilitySituation" column="liability_situation"></result>
+        <result property="creditReport" column="credit_report"></result>
+        <result property="loanPlatform" column="loan_platform"></result>
+        <result property="loanAmount" column="loan_amount"></result>
+        <result property="borrowerPayment" column="borrower_payment"></result>
+        <result property="borrowerIndustry" column="borrower_industry"></result>
+        <result property="borrowerCapitalSituation" column="borrower_capital_situation"></result>
+        <result property="borrowerRunSituation" column="borrower_run_situation"></result>
+        <result property="borrowerRefundSituation" column="borrower_refund_situation"></result>
+        <result property="borrowerOverdueSituation" column="borrower_overdue_situation"></result>
+        <result property="borrowerOverdueLoan" column="borrower_overdue_loan"></result>
+        <result property="borrowerLawsuits" column="borrower_lawsuits"></result>
+        <result property="borrowerPunish" column="borrower_punish"></result>
+        <result property="loanGradeAssess" column="loan_grade_assess"></result>
+    </resultMap>
+    <!--定义个性字符串-->
+    <!--<sql id="Borrow">-->
+
+    <!--</sql>-->
+    <select id="findById" resultMap="BorrowMap">
+        SELECT * FROM  borrower
+        WHERE borrower_id=#{id}
+    </select>
+</mapper>

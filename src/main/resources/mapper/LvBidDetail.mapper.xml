@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.lv.LvBidDetailDao">
+    <!--建立结果集映射关系-->
+    <resultMap id="BidDetailMap" type="com.qianfeng.springboot.bean.BidDetail">
+        <id property="bidId" column="bid_id"></id>
+        <result property="borrowMoneyId" column="borrow_number"></result>
+        <result property="bidMoney" column="bid_money"></result>
+        <result property="bidTime" column="bid_time"></result>
+        <result property="Status" column="bid_statusbid_status"></result>
+        <result property="bidStatus" column="bid_status"></result>
+        <result property="grossInterest" column="gross_interest"></result>
+        <association property="user" column="user_id" select="com.qianfeng.springboot.dao.lv.LvUserDetailsDao.findById"></association>
+        <association property="creditor" column="creditor_id" select="com.qianfeng.springboot.dao.lv.LvUserDetailsDao.findById"></association>
+    </resultMap>
+    <select id="findById" resultMap="BidDetailMap">
+        SELECT * FROM bid_detail
+        <where>
+            borrow_number=#{number}
+        </where>
+    </select>
+    <insert id="save">
+        INSERT INTO bid_detail
+        <trim prefix="(" suffixOverrides=",">
+            <if test="userId!=null">
+                user_id,
+            </if>
+            <if test="creditorId!=null">
+                creditor_id,
+            </if>
+            <if test="borrowMoneyId">
+                borrow_number,
+            </if>
+            <if test="bidMoney!=null">
+                bid_money,
+            </if>
+            <if test="bidTime!=null">
+                bid_time,
+            </if>
+            <if test="Status!=null">
+                bid_statusbid_status,
+            </if>
+            <if test="bidStatus!=null">
+                bid_status,
+            </if>
+            <if test="grossInterest!=null">
+                gross_interest,
+            </if>
+        </trim>
+        <trim prefix=") VALUES (" suffixOverrides="," suffix=")">
+            <if test="userId!=null">
+                #{userId},
+            </if>
+            <if test="creditorId!=null">
+                #{creditorId},
+            </if>
+            <if test="borrowMoneyId">
+                #{borrowMoneyId},
+            </if>
+            <if test="bidMoney!=null">
+                #{bidMoney},
+            </if>
+            <if test="bidTime!=null">
+                #{bidTime},
+            </if>
+            <if test="Status!=null">
+                #{Status},
+            </if>
+            <if test="bidStatus!=null">
+                #{bidStatus},
+            </if>
+            <if test="grossInterest!=null">
+                #{grossInterest},
+            </if>
+        </trim>
+    </insert>
+</mapper>

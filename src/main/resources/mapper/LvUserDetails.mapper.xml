@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.lv.LvUserDetailsDao">
+    <!--建立结果集映射关系-->
+    <resultMap id="UserDetailsMap" type="com.qianfeng.springboot.bean.UserDetails">
+        <id property="detailId" column="detail_id"></id>
+        <result property="userId" column="user_id"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="userCard" column="user_card"></result>
+        <result property="userBalance" column="user_balance"></result>
+        <result property="userSum" column="user_sum"></result>
+    </resultMap>
+    <select id="findById" resultMap="UserDetailsMap">
+      SELECT * FROM user_details
+      WHERE user_id=#{id}
+    </select>
+    <update id="update">
+        UPDATE user_details
+        SET user_balance=#{userBalance}
+        WHERE user_id=#{id}
+    </update>
+</mapper>

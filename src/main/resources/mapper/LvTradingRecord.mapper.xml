@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.lv.LvTradingRecordDao">
+    <!--建立结果集映射关系-->
+    <resultMap id="TradingRecordMap" type="com.qianfeng.springboot.bean.TradingRecord">
+        <id property="transactionId" column="transaction_id"></id>
+        <result property="userId" column="user_id"></result>
+        <result property="transactionNum" column="transaction_num"></result>
+        <result property="transactionName" column="transaction_name"></result>
+        <result property="transactionType" column="transaction_type"></result>
+        <result property="transactionPrice" column="transaction_price"></result>
+        <result property="availableBalance" column="available_balance"></result>
+        <result property="frozenCapital" column="frozen_capital"></result>
+        <result property="collectMoney" column="collect_money"></result>
+        <result property="time" column="time"></result>
+        <result property="remark" column="remark"></result>
+    </resultMap>
+    <insert id="save">
+        INSERT INTO trading_record
+        <trim prefix="(" suffixOverrides=",">
+            <if test="userId!= null">
+                user_id,
+            </if>
+            <if test="transactionNum!= null">
+                transaction_num,
+            </if>
+            <if test="transactionName!= null">
+                transaction_name,
+            </if>
+            <if test="transactionType!= null">
+                transaction_type,
+            </if>
+            <if test="transactionPrice!= null">
+                transaction_price,
+            </if>
+            <if test="availableBalance!= null">
+                available_balance,
+            </if>
+            <if test="frozenCapital!= null">
+                frozen_capital,
+            </if>
+            <if test="collectMoney!= null">
+                collect_money,
+            </if>
+            <if test="time!= null">
+                `time`,
+            </if>
+            <if test="remark!= null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix=") VALUES (" suffixOverrides="," suffix=")">
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="transactionNum!= null">
+                #{transactionNum},
+            </if>
+            <if test="transactionName!= null">
+                #{transactionName},
+            </if>
+            <if test="transactionType!= null">
+                #{transactionType},
+            </if>
+            <if test="transactionPrice!= null">
+                #{transactionPrice},
+            </if>
+            <if test="availableBalance!= null">
+                #{availableBalance},
+            </if>
+            <if test="frozenCapital!= null">
+                #{frozenCapital},
+            </if>
+            <if test="collectMoney!= null">
+                #{collectMoney},
+            </if>
+            <if test="time!= null">
+                #{time},
+            </if>
+            <if test="remark!= null">
+                #{remark},
+            </if>
+        </trim>
+    </insert>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper">
+
+
+    <resultMap id="baseResult" type="com.qianfeng.springboot.bean.ProductInfo">
+        <id property="productInfoId" column="product_info_id" javaType="java.lang.Integer"/>
+        <result property="infoName" column="info_name" javaType="java.lang.String"/>
+        <result property="rateReturn" column="rate_return" javaType="java.lang.Double"/>
+        <result property="viability" column="viability" javaType="java.lang.Integer"/>
+        <result property="borrowerId" column="borrower_id" javaType="java.lang.Integer"/>
+    </resultMap>
+
+    <select id="selectProductInfoById" resultMap="baseResult">
+        select product_info_id,info_name,rate_return,viability,borrower_id from product_info where product_id=#{productId}
+    </select>
+</mapper>
