@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.IBidDetailDAO">
+    <resultMap id="baseResultBidDetailW" type="com.qianfeng.springboot.bean.BidDetail">
+        <id column="bid_id" property="bidId" javaType="java.lang.Long" />
+        <result column="user_id" property="userId" javaType="java.lang.Long" />
+        <result column="creditor_id" property="creditorId" javaType="java.lang.Long" />
+        <result column="borrow_number" property="borrowNumber" javaType="java.lang.String" />
+        <result column="bid_money" property="bidMoney" javaType="java.lang.Long" />
+        <result column="bid_time" property="bidTime" javaType="java.lang.String" />
+        <result column="bid_statusbid_status" property="bidStatusbidStatus" javaType="java.lang.String" />
+        <result column="bid_status" property="bidStatus" javaType="java.lang.String" />
+        <result column="gross_interest" property="grossInterest" javaType="java.lang.Double" />
+        <result column="product_infoId" property="productInfoId" javaType="java.lang.Long" />
+    </resultMap>
+    <insert id="addOrderW">
+        insert into bid_detail(user_id, bid_money, bid_time, bid_statusbid_status,gross_interest)
+        values (#{id},#{money},#{time},#{status},#{allMoney})
+    </insert>
+
+<!--添加明细数据-->
+    <insert id="selectWB">
+        insert into bid_detail(user_id,bid_money,bid_time,bid_statusbid_status,gross_interest)
+        values (#{id},#{money},#{bTime},#{bss},#{grI})
+    </insert>
+</mapper>

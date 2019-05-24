@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.IBorrowerMoneyWDAO">
+   <resultMap id="baseBorrowerWs" type="com.qianfeng.springboot.bean.BorrowMoney">
+       <id column="borrow_money_id" property="borrowMoneyId" javaType="java.lang.Long"  />
+       <result column="borrow_number" property="borrowNumber" javaType="java.lang.String" />
+       <result column="product_id" property="productId" javaType="java.lang.Long" />
+       <result column="borrower_id" property="borrowerId" javaType="java.lang.Long" />
+       <result column="borrow_money_sum" property="borrowMoneySum" javaType="java.lang.Long" />
+       <result column="borrow_money_serve" property="borrowMoneyServe" javaType="java.lang.Long" />
+       <result column="funds_received" property="fundsReceived" javaType="java.lang.Long" />
+       <result column="borrow_money_repayment" property="borrowMoneyRepayment" javaType="java.lang.Double" />
+       <result column="receipt_capital" property="receiptCapital" javaType="java.lang.Double" />
+       <result column="receipt_interest" property="receiptInterest" javaType="java.lang.Double" />
+       <result column="bid_sun" property="bidSun" javaType="java.lang.Double" />
+       <result column="annual_interest_rate" property="annualInterestRate" javaType="java.lang.Double" />
+       <result column="payment_method" property="paymentMethod" javaType="java.lang.String" />
+       <result column="min_tendered_sum" property="minTenderedSum" javaType="java.lang.Long" />
+       <result column="valid_time" property="validTime" javaType="java.lang.String" />
+       <result column="life_of_loan" property="lifeOfLoan" javaType="java.lang.Long" />
+      <result column="max_bid" property="maxBid" javaType="java.lang.String" />
+       <result column="final_repayment_date" property="finalRepaymentDate" javaType="java.lang.String" />
+       <result column="borrow_money_state" property="borrowMoneyState" javaType="java.lang.String" />
+       <result column="achieve_percent" property="achievePercent" javaType="java.lang.Long" />
+       <result column="release_time" property="releaseTime" javaType="java.lang.String" />
+       <result column="repayment_start_time" property="repaymentStartTime" javaType="java.lang.String" />
+        <result column="repaymen_final_time" property="repaymenFinalTime" javaType="java.lang.String"/>
+       <result column="product_info_id" property="productInfoId" javaType="java.lang.Long"/>
+   </resultMap>
+
+    <sql id="sqlShut">
+         borrow_money_id,borrow_number,product_id,borrower_id,borrow_money_sum,borrow_money_serve,
+          funds_received,borrow_money_repayment,receipt_capital,receipt_interest,bid_sun,annual_interest_rate,
+          payment_method,min_tendered_sum,valid_time,life_of_loan,max_bid,final_repayment_date,borrow_money_state,
+          achieve_percent,release_time,repayment_start_time,repaymen_final_time,product_info_id
+    </sql>
+
+    <select id="chckerAllBorrower" resultMap="baseBorrowerWs">
+        select <include refid="sqlShut"/> from borrow_money limit #{index},10;
+    </select>
+</mapper>

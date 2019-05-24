@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.IUserDetailsWDAO">
+    <update id="changeMoneyW">
+        update user_details set user_balance = user_balance - #{loanMoney} where detail_id=#{id}
+    </update>
+<!--修改可用余额，冻结资金-->
+    <update id="changeWMoney">
+        update user_details set user_balance=#{userBalance},frozen_capital=#{frozenCapital} where user_id=#{id}
+    </update>
+
+    <!--查询用户资金数据-->
+    <select id="selectWId" resultType="com.qianfeng.springboot.bean.UserDetails">
+        select user_id,user_name,user_card,user_balance,user_sum,frozen_capital from user_details where user_id=#{id}
+    </select>
+</mapper>

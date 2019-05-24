@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.IBorrowerMoneyWDAO">
+   <resultMap id="baseResultVOW" type="com.qianfeng.springboot.vo.BorrowerVO">
+       <id column="borrower_id" property="borrowerId" javaType="java.lang.Long" />
+       <result column="borrow_money_sum" property="borrowMoneySum" javaType="java.lang.Long" />
+       <result column="borrow_number" property="borrowNumber" javaType="java.lang.String" />
+       <result column="borrower_name" property="borrowerName" javaType="java.lang.String" />
+       <result column="borrower_number" property="borrowerNumber" javaType="java.lang.String" />
+       <result column="life_of_loan" property="lifeOfLoan" javaType="java.lang.Long" />
+   </resultMap>
+
+ <!--   产品组成-->
+    <select id="selectBorrowerVOW" resultMap="baseResultVOW" >
+        select bm.borrow_number,bm.borrow_money_sum,bm.life_of_loan,bm.borrower_id,bw.borrower_number,bw.borrower_name
+        from borrower bw left join borrow_money bm on bw.borrower_id=bm.borrower_id limit #{index},10;
+    </select>
+
+    <!--项目详情-->
+    <select id="selectAllW" resultType="com.qianfeng.springboot.vo.BorrowerAllVO">
+         SELECT * from borrower b join borrow_money bm on b.borrower_id=bm.borrower_id where bm.borrow_number=#{number}
+    </select>
+
+</mapper>

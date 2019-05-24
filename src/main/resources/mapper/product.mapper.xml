@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.IProductWDAO">
+    <resultMap id="baseResultMaps" type="com.qianfeng.springboot.bean.Product">
+        <id column="product_id" property="productId" javaType="java.lang.Long"/>
+        <result column="product_name" property="productName" javaType="java.lang.String"/>
+        <result column="product_threshold_max" property="productThresholdMax" javaType="java.lang.Long"/>
+        <result column="product_threshold" property="productThreshold" javaType="java.lang.Long"/>
+        <result column="product_lock" property="productLock" javaType="java.lang.Long"/>
+        <result column="product_min_interest" property="productMinInterest" javaType="java.lang.Double"/>
+        <result column="product_max_interest" property="productMaxInterest" javaType="java.lang.Double"/>
+    </resultMap>
+    <select id="queryByIdFromProduct" resultMap="baseResultMaps">
+        select product_id,product_name,product_threshold_max,product_threshold,product_lock,product_min_interest,product_max_interest
+        from product where product_id=#{id}
+    </select>
+</mapper>

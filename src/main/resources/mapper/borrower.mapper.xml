@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.IBorrowerWDAO">
+    <resultMap id="baseResultBoMap" type="com.qianfeng.springboot.bean.Borrower">
+        <id column="borrower_id" property="borrowerId" javaType="java.lang.Long"/>
+        <result column="borrower_name" property="borrowerName" javaType="java.lang.String"/>
+        <result column="borrower_number" property="borrowerNumber" javaType="java.lang.String"/>
+        <result column="borrower_sex" property="borrowerSex" javaType="java.lang.String"/>
+        <result column="borrower_age" property="borrowerAge" javaType="java.lang.Long"/>
+        <result column="borrower_degree" property="borrowerDegree" javaType="java.lang.String"/>
+        <result column="borrower_marriage" property="borrowerMarriage" javaType="java.lang.String"/>
+        <result column="borrower_census_register" property="borrowerCensusRegister" javaType="java.lang.String"/>
+        <result column="borrow_money_use" property="borrowMoneyUse" javaType="java.lang.String"/>
+        <result column="monthly_income" property="monthlyIncome" javaType="java.lang.String"/>
+        <result column="liability_situation" property="liabilitySituation" javaType="java.lang.String"/>
+        <result column="credit_report" property="creditReport" javaType="java.lang.String"/>
+        <result column="loan_platform" property="loanPlatform" javaType="java.lang.String"/>
+        <result column="loan_amount" property="loanAmount" javaType="java.lang.Long"/>
+        <result column="borrower_payment" property="borrowerPayment" javaType="java.lang.String"/>
+        <result column="borrower_industry" property="borrowerIndustry" javaType="java.lang.String"/>
+        <result column="borrower_capital_situation" property="borrowerCapitalSituation" javaType="java.lang.String"/>
+        <result column="borrower_refund_situation" property="borrowerRefundSituation" javaType="java.lang.String"/>
+        <result column="borrower_overdue_situation" property="borrowerOverdueSituation" javaType="java.lang.String"/>
+        <result column="borrower_overdue_loan" property="borrowerOverdueLoan" javaType="java.lang.Long"/>
+        <result column="borrower_lawsuits" property="borrowerLawsuits" javaType="java.lang.String"/>
+        <result column="borrower_punish" property="borrowerPunish" javaType="java.lang.String"/>
+        <result column="loan_grade_assess" property="loanGradeAssess" javaType="java.lang.String"/>
+    </resultMap>
+
+    <sql id="simplify">
+           borrower_id,borrower_name,borrower_number,borrower_sex,borrower_age,borrower_degree,borrower_marriage,
+        borrower_census_register,borrow_money_use,monthly_income,liability_situation,credit_report,loan_platform,
+        loan_amount,borrower_payment,borrower_industry,borrower_capital_situation,borrower_refund_situation,
+        borrower_overdue_situation,borrower_overdue_loan,borrower_lawsuits,borrower_punish,loan_grade_assess
+        </sql>
+
+    <select id="queryByNameFromBorrower" resultMap="baseResultBoMap">
+        select <include refid="simplify"/> from borrower where borrower_id=#{number}
+    </select>
+</mapper>
