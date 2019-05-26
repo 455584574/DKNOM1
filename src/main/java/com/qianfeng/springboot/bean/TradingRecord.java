@@ -11,8 +11,8 @@ public class TradingRecord {
   private long transactionPrice;
   private long availableBalance;
   private long frozenCapital;
-  private double collectMoney;
-  private String time;
+  private long collectMoney;
+  private java.sql.Timestamp time;
   private String remark;
 
 
@@ -88,20 +88,20 @@ public class TradingRecord {
   }
 
 
-  public double getCollectMoney() {
+  public long getCollectMoney() {
     return collectMoney;
   }
 
-  public void setCollectMoney(double collectMoney) {
+  public void setCollectMoney(long collectMoney) {
     this.collectMoney = collectMoney;
   }
 
 
-  public String getTime() {
+  public java.sql.Timestamp getTime() {
     return time;
   }
 
-  public void setTime(String time) {
+  public void setTime(java.sql.Timestamp time) {
     this.time = time;
   }
 

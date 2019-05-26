@@ -1,12 +1,13 @@
 package com.qianfeng.springboot.service;
 
-import com.qianfeng.springboot.vo.ProductInfoYVO;
+import com.qianfeng.springboot.bean.ProductInfo;
+import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 
 public interface IProductInfoService {
 
-    List<ProductInfoYVO> selectProductInfoById(Integer productId);
+    List<ProductInfo> selectProductInfoById(Integer productId);
 
-    ProductInfoYVO selectProductInfoByINfoId(Integer productInfoId);
 }

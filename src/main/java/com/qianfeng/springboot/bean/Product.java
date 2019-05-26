@@ -20,7 +20,6 @@ public class Product {
     this.productId = productId;
   }
 
-
   public String getProductName() {
     return productName;
   }
@@ -28,7 +27,6 @@ public class Product {
   public void setProductName(String productName) {
     this.productName = productName;
   }
-
 
   public long getProductThreshold() {
     return productThreshold;
@@ -38,7 +36,6 @@ public class Product {
     this.productThreshold = productThreshold;
   }
 
-
   public long getProductThresholdMax() {
     return productThresholdMax;
   }
@@ -46,7 +43,6 @@ public class Product {
   public void setProductThresholdMax(long productThresholdMax) {
     this.productThresholdMax = productThresholdMax;
   }
-
 
   public long getProductLock() {
     return productLock;
@@ -56,7 +52,6 @@ public class Product {
     this.productLock = productLock;
   }
 
-
   public double getProductMinInterest() {
     return productMinInterest;
   }
@@ -65,7 +60,6 @@ public class Product {
     this.productMinInterest = productMinInterest;
   }
 
-
   public double getProductMaxInterest() {
     return productMaxInterest;
   }
@@ -73,5 +67,4 @@ public class Product {
   public void setProductMaxInterest(double productMaxInterest) {
     this.productMaxInterest = productMaxInterest;
   }
-
 }

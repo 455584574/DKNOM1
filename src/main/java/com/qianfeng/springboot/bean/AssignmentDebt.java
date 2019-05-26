@@ -3,18 +3,18 @@ package com.qianfeng.springboot.bean;
 
 public class AssignmentDebt {
 
-  private String assignmentId;
+  private long assignmentId;
   private long userId;
   private long borrowMoneyId;
   private java.sql.Timestamp transferTime;
   private long recycleId;
 
 
-  public String getAssignmentId() {
+  public long getAssignmentId() {
     return assignmentId;
   }
 
-  public void setAssignmentId(String assignmentId) {
+  public void setAssignmentId(long assignmentId) {
     this.assignmentId = assignmentId;
   }
 

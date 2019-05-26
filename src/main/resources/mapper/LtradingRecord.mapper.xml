@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.springboot.dao.TradingRecordMapper">
+    <resultMap id="resultMap" type="com.qianfeng.springboot.bean.TradingRecord">
+        <id property="transactionId" column="transactionId"/>
+        <result property="userId" column="userId"/>
+        <result property="transactionNum" column="transaction_num"/>
+        <result property="transactionName" column="transaction_name"/>
+        <result property="transactionType" column="transaction_type"/>
+        <result property="transactionPrice" column="transaction_price"/>
+        <result property="transactionPrice" column="transaction_price"/>
+        <result property="availableBalance" column="available_balance"/>
+        <result property="frozenCapital" column="frozen_capital"/>
+        <result property="collectMoney" column="collect_money"/>
+
+    </resultMap>
+    <update id="increaseMoney">
+        UPDATE trading_record a SET a.available_balance = a.available_balance + a.frozen_capital where transaction_num = #{num}
+    </update>
+    <update id="empty" >
+        UPDATE trading_record a SET a.frozen_capital =a.frozen_capital - a.frozen_capital WHERE transaction_num =#{num}
+    </update>
+
+    <select id="queryBiao" resultMap="resultMap">
+        SELECT transaction_num from trading_record;
+    </select>
+
+    <!--<update id="deleteMoney">-->
+         <!--update trading_record set available_balance=available_balance - #{availableBalance} where trading_record =#{TradingRecord}-->
+    <!--</update>-->
+    <!--<select id="findByTable" resultMap="resultMap">-->
+        <!--SELECT * from trading_record;-->
+    <!--</select>-->
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianfeng.springboot.dao.ITbUserMapper">
+        <!--用户余额,总金额-->
+    <resultMap id="resultMap" type="com.qianfeng.springboot.vo.TbUser">
+        <id property="userId" column="user_id"/>
+        <result property="userAccount" column="user_account"/>
+        <result property="userPassword" column="user_password"/>
+        <result property="userNickname" column="user_nickname"/>
+        <result property="userCellphone" column="user_cellphone"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="availableBalance" column="available_balance"/>
+        <result property="frozenCapital" column="frozen_capital"/>
+        
+        <!--用户 可用余额-->
+        <collection property="userDetails"  ofType="com.qianfeng.springboot.bean.UserDetails">
+            <id property="detailId" column="detail_id"/>
+            <result property="userId" column="user_id"/>
+            <result property="userName" column="user_name"/>
+            <result property="userCard" column="user_card"/>
+            <result property="userBalance" column="user_balance"/>
+            <result property="userSum" column="user_sum"/>
+        </collection>
+        <!--总利息-->
+        <collection property="bidDetail"  ofType="com.qianfeng.springboot.bean.BidDetail">
+            <result property="bidId" column="bid_id"/>
+            <result property="userId" column="user_id"/>
+            <result property="borrowMoneyId" column="borrowMoney_id"/>
+            <result property="borrowNumber" column="Borrow_number"/>
+            <result property="bidMoney" column="bid_money"/>
+            <result property="bidTime" column="bid_time"/>
+            <result property="bidStatusbidStatus" column="bid_statusbid_status"/>
+            <result property="bidStatus" column="bid_status"/>
+            <result property="grossInterest" column="gross_interest"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryMoney" resultMap="resultMap">
+            SELECT * FROM tb_user LEFT JOIN(user_details,bid_detail) on (tb_user.user_id=user_details.detail_id AND user_details.detail_id=bid_detail.bid_id)
+        WHERE tb_user.user_id = #{userId};
+    </select>
+
+    <select id="queryUserId" resultMap="resultMap">
+        SELECT user_id FROM tb_user
+    </select>
+</mapper>

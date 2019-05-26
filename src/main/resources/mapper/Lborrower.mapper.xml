@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianfeng.springboot.dao.IBorrowerMapper">
+    <resultMap id="borrowMap" type="com.qianfeng.springboot.bean.Borrower">
+        <id property="borrowerId" column="borrower_id"/>
+        <result property="borrowerName" column="borrower_name"/>
+        <result property="borrowerNumber" column="borrower_number"/>
+        <result property="borrowerSex" column="borrower_sex"/>
+        <result property="borrowerAge" column="borrower_age"/>
+        <result property="borrowerDegree" column="borrower_degree"/>
+        <result property="borrowerMarriage" column="borrower_marriage" />
+        <result property="borrowerCensusRegister" column="borrower_census_register"/>
+        <result property="borrowMoneyUse" column="borrow_money_use"/>
+        <result property="monthlyIncome" column="monthly_income"/>
+        <result property="liabilitySituation" column="liability_situation"/>
+        <result property="creditReport" column="credit_report"/>
+        <result property="loanPlatform" column="loan_platform"/>
+        <result property="loanAmount" column="loan_amount"/>
+        <result property="borrowerPayment" column="borrower_payment"/>
+        <result property="borrowerIndustry" column="borrower_industry"/>
+        <result property="borrowerCapitalSituation" column="borrower_capital_situation"/>
+        <result property="borrowerRunSituation" column="borrower_run_situation"/>
+        <result property="borrowerRefundSituation" column="borrower_refund_situation"/>
+        <result property="borrowerOverdueSituation" column="borrower_overdue_situation"/>
+        <result property="borrowerOverdueLoan" column="borrower_overdue_loan"/>
+        <result property="borrowerLawsuits" column="borrower_lawsuits"/>
+        <result property="borrowerPunish" column="borrower_punish"/>
+        <result property="loanGradeAssess" column="loan_grade_assess"/>
+        <association property="refundDetail" javaType="com.qianfeng.springboot.bean.RefundDetail">
+            <id property="refundId" column="refund_id"/>
+            <result property="borrowerId" column="borrower_id"/>
+            <result property="refundInterest" column="refund_interest"/>
+            <result property="refundCapital" column="refund_capital"/>
+            <result property="refundTime" column="refund_time"/>
+            <result property="state" column="state"/>
+            <result property="realTime" column="real_time"/>
+            <result property="realCapiInterest" column="real_capi_interest"/>
+        </association>
+    </resultMap>
+
+
+    <select id="queryBorrowById" resultMap="borrowMap">
+      SELECT * FROM borrower WHERE borrower_id=#{borrowerId};
+    </select>
+
+    <select id="queryInfo" resultMap="borrowMap">
+        SELECT *FROM borrower JOIN refund_detail
+        on borrower.borrower_id = refund_detail.borrower_id
+		WHERE borrower.borrower_id =#{borId};
+    </select>
+</mapper>

@@ -9,15 +9,7 @@ public class UserDetails {
   private String userCard;
   private long userBalance;
   private long userSum;
-  private  double frozenCapital;
 
-  public double getFrozenCapital() {
-    return frozenCapital;
-  }
-
-  public void setFrozenCapital(double frozenCapital) {
-    this.frozenCapital = frozenCapital;
-  }
 
   public long getDetailId() {
     return detailId;

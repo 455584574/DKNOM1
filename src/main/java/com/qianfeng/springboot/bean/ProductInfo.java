@@ -9,7 +9,6 @@ public class ProductInfo {
   private long viability;
   private long productId;
   private long borrowerId;
-  private long totalTransfer;
 
 
   public long getProductInfoId() {
@@ -20,7 +19,6 @@ public class ProductInfo {
     this.productInfoId = productInfoId;
   }
 
-
   public String getInfoName() {
     return infoName;
   }
@@ -28,7 +26,6 @@ public class ProductInfo {
   public void setInfoName(String infoName) {
     this.infoName = infoName;
   }
-
 
   public double getRateReturn() {
     return rateReturn;
@@ -38,7 +35,6 @@ public class ProductInfo {
     this.rateReturn = rateReturn;
   }
 
-
   public long getViability() {
     return viability;
   }
@@ -46,7 +42,6 @@ public class ProductInfo {
   public void setViability(long viability) {
     this.viability = viability;
   }
-
 
   public long getProductId() {
     return productId;
@@ -56,7 +51,6 @@ public class ProductInfo {
     this.productId = productId;
   }
 
-
   public long getBorrowerId() {
     return borrowerId;
   }
@@ -64,14 +58,4 @@ public class ProductInfo {
   public void setBorrowerId(long borrowerId) {
     this.borrowerId = borrowerId;
   }
-
-
-  public long getTotalTransfer() {
-    return totalTransfer;
-  }
-
-  public void setTotalTransfer(long totalTransfer) {
-    this.totalTransfer = totalTransfer;
-  }
-
 }

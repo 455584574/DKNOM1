@@ -3,23 +3,30 @@ package com.qianfeng.springboot.bean;
 
 public class BidDetail {
 
-  private long bidId;
+  private String bidId;
   private long userId;
-  private long creditorId;
+  private String borrowMoneyId;
   private String borrowNumber;
-  private double bidMoney;
-  private String bidTime;
+  private long bidMoney;
+  private java.sql.Timestamp bidTime;
   private String bidStatusbidStatus;
   private String bidStatus;
-  private double grossInterest;
-  private long productInfoId;
+  private long grossInterest;
 
 
-  public long getBidId() {
+  public String getBorrowNumber() {
+    return borrowNumber;
+  }
+
+  public void setBorrowNumber(String borrowNumber) {
+    this.borrowNumber = borrowNumber;
+  }
+
+  public String getBidId() {
     return bidId;
   }
 
-  public void setBidId(long bidId) {
+  public void setBidId(String bidId) {
     this.bidId = bidId;
   }
 
@@ -33,50 +40,40 @@ public class BidDetail {
   }
 
 
-  public long getCreditorId() {
-    return creditorId;
+  public String getBorrowMoneyId() {
+    return borrowMoneyId;
   }
 
-  public void setCreditorId(long creditorId) {
-    this.creditorId = creditorId;
-  }
-
-
-  public String getBorrowNumber() {
-    return borrowNumber;
-  }
-
-  public void setBorrowNumber(String borrowNumber) {
-    this.borrowNumber = borrowNumber;
+  public void setBorrowMoneyId(String borrowMoneyId) {
+    this.borrowMoneyId = borrowMoneyId;
   }
 
 
-  public double getBidMoney() {
+  public long getBidMoney() {
     return bidMoney;
   }
 
-  public void setBidMoney(double bidMoney) {
+  public void setBidMoney(long bidMoney) {
     this.bidMoney = bidMoney;
   }
 
 
-  public String getBidTime() {
+  public java.sql.Timestamp getBidTime() {
     return bidTime;
   }
 
-  public void setBidTime(String bidTime) {
+  public void setBidTime(java.sql.Timestamp bidTime) {
     this.bidTime = bidTime;
   }
 
-
   public String getBidStatusbidStatus() {
+
     return bidStatusbidStatus;
   }
 
   public void setBidStatusbidStatus(String bidStatusbidStatus) {
     this.bidStatusbidStatus = bidStatusbidStatus;
   }
-
 
   public String getBidStatus() {
     return bidStatus;
@@ -87,21 +84,12 @@ public class BidDetail {
   }
 
 
-  public double getGrossInterest() {
+  public long getGrossInterest() {
     return grossInterest;
   }
 
-  public void setGrossInterest(double grossInterest) {
+  public void setGrossInterest(long grossInterest) {
     this.grossInterest = grossInterest;
-  }
-
-
-  public long getProductInfoId() {
-    return productInfoId;
-  }
-
-  public void setProductInfoId(long productInfoId) {
-    this.productInfoId = productInfoId;
   }
 
 }

@@ -28,6 +28,15 @@ public class Borrower {
   private String borrowerPunish;
   private String loanGradeAssess;
 
+  private RefundDetail refundDetail;
+
+  public RefundDetail getRefundDetail() {
+    return refundDetail;
+  }
+
+  public void setRefundDetail(RefundDetail refundDetail) {
+    this.refundDetail = refundDetail;
+  }
 
   public long getBorrowerId() {
     return borrowerId;

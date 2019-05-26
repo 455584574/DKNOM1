@@ -1,5 +1,8 @@
-package com.qianfeng.springboot.bean;
+package com.qianfeng.springboot.vo;
 
+
+import com.qianfeng.springboot.bean.BidDetail;
+import com.qianfeng.springboot.bean.UserDetails;
 
 public class TbUser {
 
@@ -11,6 +14,9 @@ public class TbUser {
   private String userEmail;
   private long availableBalance;
   private long frozenCapital;
+
+  private BidDetail bidDetail;
+  private UserDetails userDetails;
 
 
 
@@ -78,4 +84,19 @@ public class TbUser {
     this.frozenCapital = frozenCapital;
   }
 
+  public BidDetail getBidDetail() {
+    return bidDetail;
+  }
+
+  public void setBidDetail(BidDetail bidDetail) {
+    this.bidDetail = bidDetail;
+  }
+
+  public UserDetails getUserDetails() {
+    return userDetails;
+  }
+
+  public void setUserDetails(UserDetails userDetails) {
+    this.userDetails = userDetails;
+  }
 }

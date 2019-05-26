@@ -1,5 +1,7 @@
-package com.qianfeng.springboot.bean;
+package com.qianfeng.springboot.vo;
 
+
+import com.qianfeng.springboot.bean.ProductInfo;
 
 import java.util.Date;
 
@@ -28,7 +30,15 @@ public class BorrowMoney {
   private Date repaymentStartTime;
   private Date repaymenFinalTime;
 
+  private ProductInfo productInfo;
 
+  public ProductInfo getProductInfo() {
+    return productInfo;
+  }
+
+  public void setProductInfo(ProductInfo productInfo) {
+    this.productInfo = productInfo;
+  }
 
   public long getBorrowMoneyId() {
     return borrowMoneyId;
